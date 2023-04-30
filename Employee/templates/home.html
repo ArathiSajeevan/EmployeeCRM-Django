@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Register</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-md-offset-3 col-md-5">
+                <form action="" method="post" autocomplete="off">
+                    
+                <h3 class="page-header text-primary text-center"> Registration </h3>
+                <div class="form-group">
+                    <label>Emp-no</label>
+                    <input type="text" class="form-control" name="emp-no">
+                </div><br>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name">
+                </div><br>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" name="address">
+                </div><br>
+                <div class="form-group">
+                    <label>Emp_start_date</label>
+                    <input type="text" class="form-control" name="emp_start_date">
+                </div><br>
+                <div class="form-group">
+                    <label>Emp_end_date</label>
+                    <input type="text" class="form-control" name="emp_end_date">
+                </div><br>
+                <div class="form-group">
+                    <label>Image</label>
+                    <input type="image" class="form-control" name="image">
+                </div><br>
+                <div class="form-group">
+                    <label>Status</label>
+                    <input type="text" class="form-control" name="status">
+                </div><br>
+                <div class="form-group pull-right">
+                    <input type="submit" value="Register" class="btn.btn-primary">
+                    <input type="reset" value="Clear" class="btn.btn-danger">
+                </div><br>
+            </form>
+            </div>
+        </div>
+        
+    </body>
+</html>
