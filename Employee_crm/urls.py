@@ -23,5 +23,6 @@ urlpatterns = [
     path('',views.home, name="home"),  #127.0.0.1:8000
     path('addData',views.addData,name="addData"),
     path('updateData/<int:id>',views.updateData,name="updateData"),
+    path('deleteData/<int:id>',views.deleteData,name="deleteData"),
 ]
 

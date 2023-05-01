@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Datas
 
+
 # Create your views here.
 
 def home(request): #127.0.0.1:8000/addData
@@ -11,6 +12,7 @@ def home(request): #127.0.0.1:8000/addData
         return render(request,'home.html',{'datas':mydata})
     else:
         return render(request,'home.html')
+    
 
 def addData(request):
     if request.method == 'POST':
@@ -55,3 +57,7 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
 
     return render(request,'update.html',{'data':mydata})
     
+def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
+    mydata=Datas.objects.get(id=id)  #object(4)
+    mydata.delete()
+    return redirect('home')

@@ -9,7 +9,7 @@
             <div class="col-md-offset-4 col-md-4">
                 <form action="/updateData/{{data.id}}" method="POST" autocomplete="off">
                 {% csrf_token %} 
-                <h3 class="page-header text-primary text-center"> Registration </h3>
+                <h3 class="page-header text-primary text-center"> Update details of {{data.Name}}</h3>
                 <div class="form-group">
                     <label>Emp_no</label>
                     <input type="text" class="form-control" value="{{data.Emp_no}}" name="emp_no">

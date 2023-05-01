@@ -55,6 +55,7 @@
                             <th>Emp_End_Date</th>
                             <th>Status</th>
                             <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     
@@ -69,6 +70,7 @@
                                 <td>{{data.Emp_end_date}}</td>
                                 <td>{{data.Status}}</td>
                                 <td><a class="btn btn-success" href="updateData/{{data.id}}">Update</a></td>
+                                <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Delete</a></td>
                             </tr>
                         </tbody>
                        {% endfor %}
