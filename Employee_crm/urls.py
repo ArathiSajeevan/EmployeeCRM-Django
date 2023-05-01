@@ -20,5 +20,8 @@ from Employee import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home),
+    path('',views.home, name="home"),  #127.0.0.1:8000
+    path('addData',views.addData,name="addData"),
+    path('updateData/<int:id>',views.updateData,name="updateData"),
 ]
+

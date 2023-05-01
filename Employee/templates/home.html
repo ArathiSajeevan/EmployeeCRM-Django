@@ -2,12 +2,12 @@
     <head>
         <title>Register</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap\css\bootstrap-grid.min.css' %}">
     </head>
     <body>
-        <div class="container">
-            <div class="col-md-offset-3 col-md-5">
-                <form action="" method="post" autocomplete="off">
+        <div class="container-fluid">
+            <div class="col-md-offset-1 col-md-4">
+                <form action="addData" method="post" autocomplete="off">
                 {%csrf_token%} 
                 <h3 class="page-header text-primary text-center"> Registration </h3>
                 <div class="form-group">
@@ -31,10 +31,6 @@
                     <input type="text" class="form-control" name="emp_end_date">
                 </div><br>
                 <div class="form-group">
-                    <label>Image</label>
-                    <input type="image" class="form-control" name="image">
-                </div><br>
-                <div class="form-group">
                     <label>Status</label>
                     <input type="text" class="form-control" name="status">
                 </div><br>
@@ -42,8 +38,42 @@
                     <input type="submit" value="Register" class="btn.btn-primary">
                     <input type="reset" value="Clear" class="btn.btn-danger">
                 </div>
+                </div>
             </form>
             </div>
+            <div class="col-md-6">
+                {% if datas %}
+                <h3 class="page-header text-primary text-center">View Details</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Emp.No</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Emp_Start_Date</th>
+                            <th>Emp_End_Date</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    
+                       {% for data in datas %}
+                       <tbody>
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{data.Emp_no}}</td>
+                                <td>{{data.Name}}</td>
+                                <td>{{data.Address}}</td>
+                                <td>{{data.Emp_start_date}}</td>
+                                <td>{{data.Emp_end_date}}</td>
+                                <td>{{data.Status}}</td>
+                                <td><a class="btn btn-success" href="updateData/{{data.id}}">Update</a></td>
+                            </tr>
+                        </tbody>
+                       {% endfor %}
+                </table>
+                {% endif %}
         </div>
         
     </body>
