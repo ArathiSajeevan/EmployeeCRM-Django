@@ -17,15 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from Employee import views
-from Account.views import login
+from Account import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',views.home, name="home"),  #127.0.0.1:8000
-    path('addData',views.addData,name="addData"),
-    path('updateData/<int:id>',views.updateData,name="updateData"),
-    path('deleteData/<int:id>',views.deleteData,name="deleteData"),
-    path('',login,name="login"),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('Account.urls')),
+    path('emp/', include('Employee.urls')),
     
 ]
 
