@@ -1,4 +1,7 @@
 from django.urls import path
+from Employee_crm import settings
+
+from Employee_crm.settings import STATIC_URL
 from .views import *
 
 urlpatterns = [
@@ -9,3 +12,6 @@ urlpatterns = [
     path('deleteData/<int:id>',deleteData,name="deleteData"),
 
 ]
+
+# urlpatterns += STATIC_URL(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# urlpatterns += STATIC_URL(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path,include
 from Employee import views
 from Account import views
+from Employee_crm import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('Account.urls')),
     path('emp/', include('Employee.urls')),
-    
 ]
+# ]+ settings.STATIC_URL(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
