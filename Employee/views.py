@@ -1,4 +1,6 @@
+from email.mime import image
 from imaplib import _Authenticator
+from math import prod
 from multiprocessing import context
 from pyexpat.errors import messages
 from urllib import request
@@ -27,14 +29,21 @@ def addData(request):
         address = request.POST['address']
         emp_start_date = request.POST['emp_start_date']
         emp_end_date = request.POST['emp_end_date']
+       
+
+        if len(request.FILES) !=0:
+            image = request.FILES['image']
+
         status = request.POST['status']
 
+        
         obj = Datas()
         obj.Emp_no = emp_no
         obj.Name = name
         obj.Address = address
         obj.Emp_start_date = emp_start_date
         obj.Emp_end_date = emp_end_date
+        obj.Image = image
         obj.Status = status
         obj.save()  #for storing datas on database
 
@@ -45,12 +54,13 @@ def addData(request):
 @login_required
 def updateData(request,id):   #127.0.0.1:8000/updateData
     mydata=Datas.objects.get(id=id)
-    if request.method=='POST':
+    if request.method =='POST':
         emp_no = request.POST['emp_no']
         name = request.POST['name']
         address = request.POST['address']
         # emp_start_date = request.POST['emp_start_date']
         # emp_end_date = request.POST['emp_end_date']
+        image = request.POST['image']
         status = request.POST['status']
 
         mydata.Emp_no=emp_no
@@ -58,6 +68,7 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         mydata.Address=address
         # mydata.Emp_start_date=emp_start_date
         # mydata.Emp_end_date=emp_end_date
+        mydata.Image=image
         mydata.Status=status
         mydata.save()
         print(":::::::::::::::::::::::here")

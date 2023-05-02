@@ -16,7 +16,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <div class="container-fluid">
-                <form action="addData" method="post" autocomplete="off">
+                <form action="addData" method="post" autocomplete="off" enctype="multipart/form-data">
                 {%csrf_token%} 
                 <h3 class="page-header text-primary text-center"> Registration </h3>
                 <div class="form-group">
@@ -38,6 +38,10 @@
                 <div class="form-group">
                     <label>Emp_end_date</label>
                     <input type="date" class="form-control" name="emp_end_date" required>
+                </div><br>
+                <div class="form-group">
+                    <label>Image</label>
+                    <input type="file" class="form-control" required name="image">
                 </div><br>
                 <div class="form-group">
                     <label>Status</label>
