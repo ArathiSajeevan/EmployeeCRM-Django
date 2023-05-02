@@ -58,16 +58,16 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         emp_no = request.POST['emp_no']
         name = request.POST['name']
         address = request.POST['address']
-        # emp_start_date = request.POST['emp_start_date']
-        # emp_end_date = request.POST['emp_end_date']
+        #emp_start_date = request.POST['emp_start_date']
+        #emp_end_date = request.POST['emp_end_date']
         image = request.POST['image']
         status = request.POST['status']
 
         mydata.Emp_no=emp_no
         mydata.Name=name
         mydata.Address=address
-        # mydata.Emp_start_date=emp_start_date
-        # mydata.Emp_end_date=emp_end_date
+        #mydata.Emp_start_date=emp_start_date
+        #mydata.Emp_end_date=emp_end_date
         mydata.Image=image
         mydata.Status=status
         mydata.save()
@@ -75,6 +75,7 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         return redirect('home')
 
     return render(request,'update.html',{'data':mydata})
+   
 
 @login_required  
 def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
