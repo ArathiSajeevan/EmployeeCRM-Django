@@ -1,11 +1,17 @@
+from imaplib import _Authenticator
+from multiprocessing import context
+from pyexpat.errors import messages
 from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Datas
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 
+@login_required
 def home(request): #127.0.0.1:8000/addData
     mydata = Datas.objects.all()
     if(mydata != ''):
@@ -13,7 +19,7 @@ def home(request): #127.0.0.1:8000/addData
     else:
         return render(request,'home.html')
     
-
+@login_required
 def addData(request):
     if request.method == 'POST':
         emp_no = request.POST['emp_no']
@@ -36,6 +42,7 @@ def addData(request):
         return redirect('home')
     return render(request,'home.html')
 
+@login_required
 def updateData(request,id):   #127.0.0.1:8000/updateData
     mydata=Datas.objects.get(id=id)
     if request.method=='POST':
@@ -56,8 +63,10 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         return redirect('home')
 
     return render(request,'update.html',{'data':mydata})
-    
+
+@login_required  
 def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
     mydata=Datas.objects.get(id=id)  #object(4)
     mydata.delete()
     return redirect('home')
+
