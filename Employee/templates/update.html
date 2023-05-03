@@ -14,31 +14,31 @@
                 {% csrf_token %} 
                 <h3 class="page-header text-primary text-center"> Update details of {{data.Name}}</h3>
                 <div class="form-group">
-                    <label>Emp_no</label>
+                    <label>Employee Number</label>
                     <input type="number" class="form-control" value="{{data.Emp_no}}" name="emp_no">
                 </div><br>
                 <div class="form-group">
-                    <label>Name</label>
+                    <label>Employee Name</label>
                     <input type="text" class="form-control" value="{{data.Name}}" name="name">
                 </div><br>
                 <div class="form-group">
-                    <label>Address</label>
+                    <label>Employee Address</label>
                     <input type="text" class="form-control" value="{{data.Address}}" name="address">
                 </div><br>
                 <div class="form-group">
-                    <label>Emp_start_date</label>
+                    <label>Start Date</label>
                     <input type="date" class="form-control" value="{{data.Emp_start_date|date:"Y-m-d"}}" name="emp_start_date">
                 </div><br>
                 <div class="form-group">
-                    <label>Emp_end_date</label>
+                    <label>End Date</label>
                     <input type="date" class="form-control" value="{{data.Emp_end_date|date:"Y-m-d"}}" name="emp_end_date">
                 </div><br>
                 <div class="form-group">
-                    <label>Image</label>
+                    <label>Employee Image</label>
                     <input type="file" class="form-control" required name="image">
                 </div><br>
                 <div class="form-group">
-                    <label>Status - Current status : {{data.Status}}</label><br>
+                    <label>Current employee status : {{data.Status}}</label><br>
                     <select name="status" id="status">
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>

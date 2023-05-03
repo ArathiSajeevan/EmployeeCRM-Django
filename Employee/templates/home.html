@@ -20,31 +20,31 @@
                 {%csrf_token%} 
                 <h3 class="page-header text-primary text-center"> Registration </h3>
                 <div class="form-group">
-                    <label>Emp_no</label>
+                    <label>Employee Number</label>
                     <input type="number" class="form-control" name="emp_no" required>
                 </div><br>
                 <div class="form-group">
-                    <label>Name</label>
+                    <label>Employee Name</label>
                     <input type="text" class="form-control" name="name" required>
                 </div><br>
                 <div class="form-group">
-                    <label>Address</label>
+                    <label>Employee Address</label>
                     <input type="text" class="form-control" name="address" required>
                 </div><br>
                 <div class="form-group">
-                    <label>Emp_start_date</label>
+                    <label>Start Date</label>
                     <input type="date" class="form-control" name="emp_start_date" required>
                 </div><br>
                 <div class="form-group">
-                    <label>Emp_end_date</label>
+                    <label>End Date</label>
                     <input type="date" class="form-control" name="emp_end_date" required>
                 </div><br>
                 <div class="form-group">
-                    <label>Image</label>
+                    <label>Employee Image</label>
                     <input type="file" class="form-control" required name="image">
                 </div><br>
                 <div class="form-group">
-                    <label>Status</label>
+                    <label>Employee Status</label>
                     <select name="status" id="status">
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
@@ -63,10 +63,10 @@
                         <tr>
                             <th>S.No</th>
                             <th>Emp.No</th>
-                            <th>Name</th>
+                            <th>Employee Name</th>
                             <th>Address</th>
-                            <th>Emp_Start_Date</th>
-                            <th>Emp_End_Date</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th>Image</th>
                             <th>Status</th>
                             <th>Update</th>
@@ -89,7 +89,7 @@
                                 <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Delete</a></td>
                             </tr>
                         </tbody>
-                       {% endfor %}x    
+                       {% endfor %} 
                 </table>
                 {% endif %}
     </div>
