@@ -60,8 +60,10 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         address = request.POST['address']
         emp_start_date = request.POST['emp_start_date']
         emp_end_date = request.POST['emp_end_date']
-        image = request.POST['image']
         status = request.POST['status']
+
+        if len(request.FILES) !=0:
+            image = request.FILES['image']
 
         mydata.Emp_no=emp_no
         mydata.Name=name
