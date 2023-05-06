@@ -85,3 +85,7 @@ def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
     mydata.delete()
     return redirect('home')
 
+@login_required 
+def view_details(request):
+    return render(request,'view_details.html')
+
