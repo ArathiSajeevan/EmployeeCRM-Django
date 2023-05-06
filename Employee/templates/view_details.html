@@ -17,43 +17,6 @@
         <div class="container-fluid">
                 <form action="addData" method="post" autocomplete="off" enctype="multipart/form-data">
                 {%csrf_token%} 
-                <!-- <h3 class="page-header text-primary text-center"> Registration </h3>
-                <div class="form-group">
-                    <label>Employee Number</label>
-                    <input type="number" class="form-control" name="emp_no" required>
-                </div><br>
-                <div class="form-group">
-                    <label>Employee Name</label>
-                    <input type="text" class="form-control" name="name" required>
-                </div><br>
-                <div class="form-group">
-                    <label>Employee Address</label>
-                    <input type="text" class="form-control" name="address" required>
-                </div><br>
-                <div class="form-group">
-                    <label>Start Date</label>
-                    <input type="date" class="form-control" name="emp_start_date" required>
-                </div><br>
-                <div class="form-group">
-                    <label>End Date</label>
-                    <input type="date" class="form-control" name="emp_end_date" required>
-                </div><br>
-                <div class="form-group">
-                    <label>Employee Image</label>
-                    <input type="file" class="form-control" required name="image">
-                </div><br>
-                <div class="form-group">
-                    <label>Employee Status</label>
-                    <select name="status" id="status">
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-                </div><br>
-                <div class="form-group pull-right">
-                    <input type="submit" value="Register" class="btn btn-success">
-                    <input type="reset" value="Clear" class="btn btn-danger">
-                </div>
-                </div>-->
             </form> 
                 {% if datas %}
                 <h3 class="page-header text-primary text-center">Registered Employees</h3><br>
@@ -82,7 +45,27 @@
                                 <td>{{data.Address}}</td>
                                 <td>{{data.Emp_start_date}}</td>
                                 <td>{{data.Emp_end_date}}</td>
-                                <td><img src="https://www.pythonanywhere.com/user/ArathiSajeevan/files/home/ArathiSajeevan/EmployeeCRM-Django/media/uploads/20230505114803image1.png" alt="loading" height="80" width="80"></td>
+                                <td><img src="https://www.pythonanywhere.com/user/ArathiSajeevan/files/home/ArathiSajeevan/EmployeeCRM-Django/media/uploads/20230505114803image1.png" onclick="enlargeImg()" id="img1" alt="loading" height="80" width="80"></td><br>
+                                <!-- Button to reset the Image size -->
+                                <button onclick="resetImg()">Reset</button>
+                                <!-- script to set display property -->
+                                <script>
+                                    // Get the img object using its Id
+                                    img = document.getElementById("img1");
+                                    // Function to increase image size
+                                    function enlargeImg() {
+                                    // Set image size to 1.5 times original
+                                    img.style.transform = "scale(8)";
+                                    // Animation effect
+                                    img.style.transition = "transform 0.25s ease";
+                                    }
+                                    // Function to reset image size
+                                    function resetImg() {
+                                        // Set image size to original
+                                        img.style.transform = "scale(1)";
+                                        img.style.transition = "transform 0.25s ease";
+                                    }
+                                </script>
                                 <td>{{data.Status}}</td>
                                 <td><a class="btn btn-success" href="updateData/{{data.id}}">Update</a></td>
                                 <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Delete</a></td>
@@ -91,6 +74,8 @@
                        {% endfor %} 
                 </table>
                 {% endif %}
+                <!-- image.style.transform = scale(sx); -->
+                
     </div>
     <div class="col-md-2"></div>
 </div>     

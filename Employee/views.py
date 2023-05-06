@@ -92,4 +92,5 @@ def view_details(request):
         return render(request,'view_details.html',{'datas':mydata})
     else:
         return render(request,'view_details.html')
+    
 
