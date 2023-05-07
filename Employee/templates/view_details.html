@@ -15,7 +15,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <div class="container-fluid">
-                <form action="addData" method="post" autocomplete="off" enctype="multipart/form-data">
+                <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                 {%csrf_token%} 
             </form> 
                 {% if datas %}
@@ -45,27 +45,7 @@
                                 <td>{{data.Address}}</td>
                                 <td>{{data.Emp_start_date}}</td>
                                 <td>{{data.Emp_end_date}}</td>
-                                <td><img src="https://www.pythonanywhere.com/user/ArathiSajeevan/files/home/ArathiSajeevan/EmployeeCRM-Django/media/uploads/20230505114803image1.png" onclick="enlargeImg()" id="img1" alt="loading" height="80" width="80"></td><br>
-                                <!-- Button to reset the Image size -->
-                                <button onclick="resetImg()">Reset</button>
-                                <!-- script to set display property -->
-                                <script>
-                                    // Get the img object using its Id
-                                    img = document.getElementById("img1");
-                                    // Function to increase image size
-                                    function enlargeImg() {
-                                    // Set image size to 1.5 times original
-                                    img.style.transform = "scale(8)";
-                                    // Animation effect
-                                    img.style.transition = "transform 0.25s ease";
-                                    }
-                                    // Function to reset image size
-                                    function resetImg() {
-                                        // Set image size to original
-                                        img.style.transform = "scale(1)";
-                                        img.style.transition = "transform 0.25s ease";
-                                    }
-                                </script>
+                                <td><a href="fullsize/{{data.id}}"><img alt="thumb" src="https://www.pythonanywhere.com/user/ArathiSajeevan/files/home/ArathiSajeevan/EmployeeCRM-Django/media/uploads/20230505114803image1.png" width="100" height="100"></a></td>
                                 <td>{{data.Status}}</td>
                                 <td><a class="btn btn-success" href="updateData/{{data.id}}">Update</a></td>
                                 <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Delete</a></td>
@@ -74,7 +54,7 @@
                        {% endfor %} 
                 </table>
                 {% endif %}
-                <!-- image.style.transform = scale(sx); -->
+                
                 
     </div>
     <div class="col-md-2"></div>

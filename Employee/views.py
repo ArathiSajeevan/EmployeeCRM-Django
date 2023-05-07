@@ -94,3 +94,11 @@ def view_details(request):
         return render(request,'view_details.html')
     
 
+@login_required 
+def full_size(request,id):
+    mydata=Datas.objects.get(id=id)
+    if(mydata != ''):
+        return render(request,'fullsize.html',{'mydata':mydata})
+    else:
+        return render(request,'fullsize.html')
+    
