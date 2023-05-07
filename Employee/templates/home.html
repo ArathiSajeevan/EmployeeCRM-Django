@@ -17,7 +17,7 @@
     <div class="col-md-8">
         <div class="container-fluid">
                 <form action="addData" method="post" autocomplete="off" enctype="multipart/form-data">
-                {%csrf_token%} 
+                {%csrf_token%}
                 <h3 class="page-header text-primary text-center"> Registration </h3>
                 <div class="form-group">
                     <label>Employee Number</label>
@@ -73,7 +73,7 @@
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    
+
                        {% for data in datas %}
                        <tbody>
                             <tr>
@@ -83,19 +83,19 @@
                                 <td>{{data.Address}}</td>
                                 <td>{{data.Emp_start_date}}</td>
                                 <td>{{data.Emp_end_date}}</td>
-                                <td><img src="/media/{{data.Image}}" alt="loading"></td>
+                                <td><img src="https://www.pythonanywhere.com/user/ArathiSajeevan/files/home/ArathiSajeevan/EmployeeCRM-Django/media/{{data.Image}}" alt="loading" width="80" height="80"></td>
                                 <td>{{data.Status}}</td>
                                 <td><a class="btn btn-success" href="updateData/{{data.id}}">Update</a></td>
                                 <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Delete</a></td>
                             </tr>
                         </tbody>
-                       {% endfor %} 
+                       {% endfor %}
                 </table>
                 {% endif %}
     </div>
     <div class="col-md-2"></div>
 </div>
-    
-    
+
+
 </body>
 </html>

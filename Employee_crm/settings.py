@@ -30,9 +30,11 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['arathisajeevan.pythonanywhere.com']
 
 CSRF_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True
 
 
 # Application definition

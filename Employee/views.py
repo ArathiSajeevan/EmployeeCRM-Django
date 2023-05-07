@@ -20,7 +20,7 @@ def home(request): #127.0.0.1:8000/addData
         return render(request,'home.html',{'datas':mydata})
     else:
         return render(request,'home.html')
-    
+
 @login_required
 def addData(request):
     if request.method == 'POST':
@@ -29,14 +29,14 @@ def addData(request):
         address = request.POST['address']
         emp_start_date = request.POST['emp_start_date']
         emp_end_date = request.POST['emp_end_date']
-       
+
 
         if len(request.FILES) !=0:
             image = request.FILES['image']
 
         status = request.POST['status']
 
-        
+
         obj = Datas()
         obj.Emp_no = emp_no
         obj.Name = name
@@ -60,8 +60,11 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         address = request.POST['address']
         emp_start_date = request.POST['emp_start_date']
         emp_end_date = request.POST['emp_end_date']
-        image = request.POST['image']
         status = request.POST['status']
+
+        if len(request.FILES) !=0:
+            image = request.FILES['image']
+
 
         mydata.Emp_no=emp_no
         mydata.Name=name
@@ -75,9 +78,9 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         return redirect('home')
 
     return render(request,'update.html',{'data':mydata})
-   
 
-@login_required  
+
+@login_required
 def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
     mydata=Datas.objects.get(id=id)  #object(4)
     mydata.delete()
