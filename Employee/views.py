@@ -86,3 +86,19 @@ def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
     mydata.delete()
     return redirect('home')
 
+@login_required
+def view_details(request):
+    mydata = Datas.objects.all()
+    if(mydata != ''):
+        return render(request,'view_details.html',{'datas':mydata})
+    else:
+        return render(request,'view_details.html')
+
+
+@login_required
+def full_size(request,id):
+    mydata=Datas.objects.get(id=id)
+    if(mydata != ''):
+        return render(request,'fullsize.html',{'mydata':mydata})
+    else:
+        return render(request,'fullsize.html')

@@ -3,6 +3,7 @@ from Employee_crm import settings
 
 from Employee_crm.settings import STATIC_URL
 from .views import *
+from Employee import views
 
 urlpatterns = [
     #employee controls
@@ -10,7 +11,8 @@ urlpatterns = [
     path('addData',addData,name="addData"),
     path('updateData/<int:id>',updateData,name="updateData"),
     path('deleteData/<int:id>',deleteData,name="deleteData"),
-
+    path('view_details',view_details,name="view_details"),
+    path('fullsize/<int:id>',full_size,name="full_size"),
 ]
 
 # urlpatterns += STATIC_URL(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
