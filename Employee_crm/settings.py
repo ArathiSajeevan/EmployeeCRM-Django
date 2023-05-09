@@ -30,11 +30,9 @@ DEBUG = False
 
 
 
-ALLOWED_HOSTS = ['arathisajeevan.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 CSRF_COOKIE_SECURE = True
-
-SECURE_SSL_REDIRECT = True
 
 
 # Application definition
@@ -141,3 +139,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 STATIC_ROOT = "/static/"
+

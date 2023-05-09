@@ -26,5 +26,4 @@ urlpatterns = [
     path('', include('Account.urls')),
     path('emp/', include('Employee.urls')),
 ]
-# ]+ settings.STATIC_URL(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
