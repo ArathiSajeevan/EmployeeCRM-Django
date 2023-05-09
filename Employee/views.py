@@ -1,14 +1,14 @@
-from email.mime import image
-from imaplib import _Authenticator
-from math import prod
-from multiprocessing import context
-from pyexpat.errors import messages
-from urllib import request
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .models import Datas
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
+from .forms import RegisterForm
+
 
 
 # Create your views here.
@@ -46,6 +46,7 @@ def addData(request):
         obj.Image = image
         obj.Status = status
         obj.save()  #for storing datas on database
+        return HttpResponse(obj)
 
         mydata = Datas.objects.all()
         return redirect('home')
@@ -65,7 +66,6 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         if len(request.FILES) !=0:
             image = request.FILES['image']
 
-
         mydata.Emp_no=emp_no
         mydata.Name=name
         mydata.Address=address
@@ -75,7 +75,7 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         mydata.Status=status
         mydata.save()
         print(":::::::::::::::::::::::here")
-        return redirect('home')
+        return redirect('view_details')
 
     return render(request,'update.html',{'data':mydata})
 
@@ -102,3 +102,25 @@ def full_size(request,id):
         return render(request,'fullsize.html',{'mydata':mydata})
     else:
         return render(request,'fullsize.html')
+    
+
+def register(request):
+    # if this is a POST request we need to process the form data
+    if request.method == "POST":
+        # create a form instance and populate it with data from the request:
+        form = RegisterForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # redirect to a new URL:
+            return HttpResponseRedirect("/thanks/")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = RegisterForm()
+
+    return render(request, "register.html", {"form": form})
+    
+
+
+

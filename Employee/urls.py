@@ -1,9 +1,11 @@
+from os import name
 from django.urls import path
-from Employee_crm import settings
-
+from Employee import views
+from Employee import urls
 from Employee_crm.settings import STATIC_URL
 from .views import *
-from Employee import views
+
+
 
 urlpatterns = [
     #employee controls
@@ -13,6 +15,8 @@ urlpatterns = [
     path('deleteData/<int:id>',deleteData,name="deleteData"),
     path('view_details',view_details,name="view_details"),
     path('fullsize/<int:id>',full_size,name="full_size"),
+    path('register',register, name="register"),
+  
 ]
 
 # urlpatterns += STATIC_URL(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

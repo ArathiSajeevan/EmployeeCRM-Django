@@ -1,7 +1,6 @@
 import datetime
 import os
 from django.db import models
-from datetime import date
 
 def filepath(request,filename):
     old_filenmame = filename
@@ -18,4 +17,7 @@ class Datas(models.Model):
     Emp_end_date = models.DateField(max_length=20,default="")
     Image = models.ImageField(upload_to=filepath,null=True, blank=True)
     Status= models.CharField(max_length=20,default="")
-    
+
+
+
+   
