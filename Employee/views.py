@@ -1,19 +1,18 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from Account.forms import RegisterForm
 from .models import Datas
 from django.contrib.auth.decorators import login_required
-
-
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import RegisterForm
-
-
+from django.contrib.auth import logout
+from django.views.decorators.cache import cache_control
+from .models import EmployeeDatas
 
 # Create your views here.
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def home(request): #127.0.0.1:8000/addData
     mydata = Datas.objects.all()
     if(mydata != ''):
@@ -22,6 +21,7 @@ def home(request): #127.0.0.1:8000/addData
         return render(request,'home.html')
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def addData(request):
     if request.method == 'POST':
         emp_no = request.POST['emp_no']
@@ -53,6 +53,7 @@ def addData(request):
     return render(request,'home.html')
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def updateData(request,id):   #127.0.0.1:8000/updateData
     mydata=Datas.objects.get(id=id)
     if request.method =='POST':
@@ -74,21 +75,23 @@ def updateData(request,id):   #127.0.0.1:8000/updateData
         mydata.Image=image
         mydata.Status=status
         mydata.save()
-        print(":::::::::::::::::::::::here")
         return redirect('view_details')
 
     return render(request,'update.html',{'data':mydata})
 
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
     mydata=Datas.objects.get(id=id)  #object(4)
     mydata.delete()
     return redirect('home')
 
+
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def view_details(request):
-    mydata = Datas.objects.all()
+    mydata = EmployeeDatas.objects.all()
     if(mydata != ''):
         return render(request,'view_details.html',{'datas':mydata})
     else:
@@ -96,6 +99,7 @@ def view_details(request):
 
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def full_size(request,id):
     mydata=Datas.objects.get(id=id)
     if(mydata != ''):
@@ -104,23 +108,36 @@ def full_size(request,id):
         return render(request,'fullsize.html')
     
 
-def register(request):
-    # if this is a POST request we need to process the form data
-    if request.method == "POST":
-        # create a form instance and populate it with data from the request:
-        form = RegisterForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # redirect to a new URL:
-            return HttpResponseRedirect("/thanks/")
+def admin_logout(request):
+    logout(request)
+    return redirect('/')
 
-    # if a GET (or any other method) we'll create a blank form
+
+#form method
+@login_required
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+
+        if form.is_valid():
+            employeedatas = EmployeeDatas(
+                Emp_no=form.cleaned_data['emp_no'], 
+                Name=form.cleaned_data['name'], 
+                Address=form.cleaned_data['address'], 
+                Emp_start_date=form.cleaned_data['emp_start_date'], 
+                Emp_end_date=form.cleaned_data['emp_end_date'], 
+                Status=form.cleaned_data['status'])
+            employeedatas.save()
+            return render(request, "register.html",{
+                "form" : form
+            })
+    
     else:
         form = RegisterForm()
+    return render(request, 'register.html',{
+        "form" : form
+    })
 
-    return render(request, "register.html", {"form": form})
-    
 
 
 

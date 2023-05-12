@@ -18,6 +18,15 @@ class Datas(models.Model):
     Image = models.ImageField(upload_to=filepath,null=True, blank=True)
     Status= models.CharField(max_length=20,default="")
 
+class EmployeeDatas(models.Model):
+    Emp_no = models.CharField(max_length=20,default="")
+    Name = models.CharField(max_length=20,default="")
+    Address = models.CharField(max_length=50,default="")
+    Emp_start_date = models.CharField(max_length=20,default="", blank=True)
+    Emp_end_date = models.CharField(max_length=20,default="")
+    #Image = models.ImageField(upload_to=filepath,null=True, blank=True)
+    Status= models.CharField(max_length=20,default="")
+
 
 
    

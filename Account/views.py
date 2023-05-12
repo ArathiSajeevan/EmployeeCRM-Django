@@ -1,11 +1,7 @@
 
-from imaplib import _Authenticator
-from multiprocessing import context
-from urllib import request
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-
 
 
 # Create your views here.
@@ -21,7 +17,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                return redirect('home')
+                return redirect('register')
             else:
                 context = {"msg":"Invalid Credentials"}
                 return render(request,template_name,context=context)

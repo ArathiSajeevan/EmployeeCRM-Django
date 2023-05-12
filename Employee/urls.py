@@ -1,7 +1,5 @@
 from os import name
 from django.urls import path
-from Employee import views
-from Employee import urls
 from Employee_crm.settings import STATIC_URL
 from .views import *
 
@@ -15,7 +13,8 @@ urlpatterns = [
     path('deleteData/<int:id>',deleteData,name="deleteData"),
     path('view_details',view_details,name="view_details"),
     path('fullsize/<int:id>',full_size,name="full_size"),
-    path('register',register, name="register"),
+    path('admin_logout',admin_logout,name="admin_logout"),
+    path('register', register,name="register"),
   
 ]
 
