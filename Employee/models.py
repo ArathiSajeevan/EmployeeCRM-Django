@@ -9,14 +9,14 @@ def filepath(request,filename):
     return os.path.join('uploads/', filename)
 # Create your models here.
 
-class Datas(models.Model):
-    Emp_no = models.IntegerField(default="")
-    Name = models.CharField(max_length=20,default="")
-    Address = models.CharField(max_length=50,default="")
-    Emp_start_date = models.DateField(max_length=20,default="", blank=True)
-    Emp_end_date = models.DateField(max_length=20,default="")
-    Image = models.ImageField(upload_to=filepath,null=True, blank=True)
-    Status= models.CharField(max_length=20,default="")
+# class Datas(models.Model):
+#     Emp_no = models.IntegerField(default="")
+#     Name = models.CharField(max_length=20,default="")
+#     Address = models.CharField(max_length=50,default="")
+#     Emp_start_date = models.DateField(max_length=20,default="", blank=True)
+#     Emp_end_date = models.DateField(max_length=20,default="")
+#     Image = models.ImageField(upload_to=filepath,null=True, blank=True)
+#     Status= models.CharField(max_length=20,default="")
 
 class EmployeeDatas(models.Model):
     Emp_no = models.CharField(max_length=20,default="")
@@ -24,7 +24,7 @@ class EmployeeDatas(models.Model):
     Address = models.CharField(max_length=50,default="")
     Emp_start_date = models.CharField(max_length=20,default="", blank=True)
     Emp_end_date = models.CharField(max_length=20,default="")
-    #Image = models.ImageField(upload_to=filepath,null=True, blank=True)
+    Image = models.ImageField(upload_to=filepath)
     Status= models.CharField(max_length=20,default="")
 
 

@@ -7,9 +7,9 @@ from .views import *
 
 urlpatterns = [
     #employee controls
-    path('home',home,name="home"),
-    path('addData',addData,name="addData"),
-    path('updateData/<int:id>',updateData,name="updateData"),
+    # path('home',home,name="home"),
+    # path('addData',addData,name="addData"),
+    # path('updateData/<int:id>',updateData,name="updateData"),
     path('deleteData/<int:id>',deleteData,name="deleteData"),
     path('view_details',view_details,name="view_details"),
     path('fullsize/<int:id>',full_size,name="full_size"),
