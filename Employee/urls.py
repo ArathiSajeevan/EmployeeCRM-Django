@@ -15,6 +15,7 @@ urlpatterns = [
     path('fullsize/<int:id>',full_size,name="full_size"),
     path('admin_logout',admin_logout,name="admin_logout"),
     path('register', register,name="register"),
+    path('update_view/<int:id>', update_view, name="update_view"),
   
 ]
 

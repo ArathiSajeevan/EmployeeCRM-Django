@@ -19,13 +19,13 @@ def filepath(request,filename):
 #     Status= models.CharField(max_length=20,default="")
 
 class EmployeeDatas(models.Model):
-    Emp_no = models.CharField(max_length=20,default="")
-    Name = models.CharField(max_length=20,default="")
-    Address = models.CharField(max_length=50,default="")
-    Emp_start_date = models.CharField(max_length=20,default="", blank=True)
-    Emp_end_date = models.CharField(max_length=20,default="")
-    Image = models.ImageField(upload_to=filepath)
-    Status= models.CharField(max_length=20,default="")
+    emp_no = models.CharField(max_length=20,default="")
+    name = models.CharField(max_length=20,default="")
+    address = models.CharField(max_length=50,default="")
+    emp_start_date = models.CharField(max_length=20,default="", blank=True)
+    emp_end_date = models.CharField(max_length=20,default="")
+    image = models.ImageField(upload_to=filepath)
+    status= models.CharField(max_length=20,default="")
 
 
 

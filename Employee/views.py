@@ -1,10 +1,13 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from Account.forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from django.contrib.auth import logout
 from django.views.decorators.cache import cache_control
+
+from Account.forms import RegisterForm, UpdateForm
+
 from .models import EmployeeDatas
 
 # Create your views here.
@@ -15,7 +18,7 @@ from .models import EmployeeDatas
 def deleteData(request,id):  #127.0.0.1:8000/deleteData/id
     mydata=EmployeeDatas.objects.get(id=id)  #object(4)
     mydata.delete()
-    return redirect('home')
+    return redirect('view_details')
 
 
 @login_required
@@ -54,13 +57,13 @@ def register(request):
 
         if form.is_valid():
             employeedatas = EmployeeDatas(
-                Emp_no=form.cleaned_data['emp_no'], 
-                Name=form.cleaned_data['name'], 
-                Address=form.cleaned_data['address'], 
-                Emp_start_date=form.cleaned_data['emp_start_date'], 
-                Emp_end_date=form.cleaned_data['emp_end_date'], 
-                Image=form.cleaned_data.get("image"),
-                Status=form.cleaned_data['status'],
+                emp_no=form.cleaned_data['emp_no'], 
+                name=form.cleaned_data['name'], 
+                address=form.cleaned_data['address'], 
+                emp_start_date=form.cleaned_data['emp_start_date'], 
+                emp_end_date=form.cleaned_data['emp_end_date'], 
+                image=form.cleaned_data.get("image"),
+                status=form.cleaned_data['status'],
                 )
             employeedatas.save()
             form = RegisterForm()
@@ -74,6 +77,22 @@ def register(request):
             "form" : form
     })
 
+
+@login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def update_view(request, id):
+    print(id)
+    context = {}
+    employeeData = EmployeeDatas.objects.get(id = id)
+    print(employeeData)
+    form = UpdateForm(request.POST or None, instance = employeeData)
+
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/emp/view_details')
+    
+    context["form"] = form
+    return render(request, "update_view.html", context)
 
 
 
